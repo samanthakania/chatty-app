@@ -14,7 +14,6 @@ newMessageHandler = (event) =>{
 newUserHandler = (event) =>{
   if(event.key === 'Enter'){
     this.props.changeUsername(event.target.value)
-    event.target.value = ''
     }
   }
 

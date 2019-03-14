@@ -23,7 +23,8 @@ wss.on('connection', (ws) => {
 
 wss.broadcast = message => {
   wss.clients.forEach(client => {
-    if (client.readyState === WebSockets.OPEN) {
+    if (client.readyState === 1) {
+      console.log(message)
       client.send(JSON.stringify(message));
     }
   });
@@ -32,15 +33,7 @@ wss.broadcast = message => {
 //from client
   ws.on("message", function incoming(message) {
     let newMessageAdded = JSON.parse(message);
-    //console.log(`User ${newMessageAdded.username} said ${newMessageAdded.content}`);
-        if(newMessageAdded.type === "incomingMessage"){
-            console.log(newMessageAdded);
-      wss.clients.forEach(function each(client) {
-        client.send(
-          JSON.stringify(newMessageAdded)
-        );
-      });
 
-    }
+      wss.broadcast(newMessageAdded)
  });
 })

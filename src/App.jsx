@@ -24,20 +24,51 @@ class App extends Component {
     this.socket.send(JSON.stringify(newMessage))
   }
 
+
+
+  changeUsername = (username) => {
+    const oldUsername = this.state.currentUser.name;
+    this.setState({
+      currentUser: {name: username}
+    })
+    const usernameData = {
+      id: uuidv1(),
+      content: `${oldUsername} has changed their name to ${username}`,
+      username: username,
+      type: "postNotification"
+    }
+
+    this.socket.send(JSON.stringify(usernameData))
+
+  }
+
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
     // Listen for messages
 
     this.socket.onmessage = (event) => {
       let message = JSON.parse(event.data);
-        console.log(message)
-      if(message.type === "incomingMessage")
-      this.setState( state => {
-        return {
-          messages:[...state.messages, message]
-        }
-      });
+      console.log(message)
+
+      if(message.type === "incomingMessage") {
+        this.setState(state => {
+          return {
+            messages:[...state.messages, message]
+          }
+        })
+      }
+
+      else if(message.type === "postNotification"){
+        this.setState(state => {
+          return {
+            messages:[...state.messages, message]
+          }
+        })
+      }
     }
+
+
+
   }
 
   render() {
@@ -50,7 +81,9 @@ class App extends Component {
         messages={this.state.messages}/>
         <ChatBar
         currentUser={this.state.currentUser.name}
-        addMessage={this.addMessage} />
+        addMessage={this.addMessage}
+        changeUsername={this.changeUsername}
+         />
       </div>
     );
   }
