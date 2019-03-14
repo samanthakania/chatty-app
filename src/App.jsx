@@ -1,5 +1,3 @@
-MY APP JSX AS OF 11:40 AM
-
 import React, {Component} from 'react';
 import ChatBar from "./Chatbar.jsx";
 import MessageList from "./MessageList.jsx";
@@ -21,18 +19,10 @@ class App extends Component {
       id: uuidv1(),
       username: this.state.currentUser.name,
       content: message,
-      type: "postMessage"
     }
     const messages = this.state.messages.concat(newMessage)
     this.setState({messages: messages})
     this.socket.send(JSON.stringify(newMessage))
-  }
-
-  changeName = (event) =>{
-    const username = event;
-    this.setState({
-      currentUser: {name: username}
-    })
   }
 
   componentDidMount() {
@@ -42,7 +32,7 @@ class App extends Component {
       // this.socket.send('Hello Server!');
     });
     // Listen for messages
-    this.socket.onmessage = (event) => {
+    this.socket.addEventListener = (event) => {
       let parsedData = JSON.parse(event.data).data;
       let parsedType = JSON.parse(event.data).type;
 
@@ -66,9 +56,7 @@ class App extends Component {
         <MessageList
         messages={this.state.messages}/>
         <ChatBar
-        currentUser={this.state.currentUser.name}
-        addMessage={this.addMessage}
-        changeUsername={this.changeUsername} />
+        currentUser={this.state.currentUser.name} addMessage={this.addMessage} />
       </div>
     );
   }

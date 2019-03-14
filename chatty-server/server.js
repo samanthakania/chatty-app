@@ -24,16 +24,18 @@ wss.on('connection', (ws) => {
 //from client
   ws.on("message", function incoming(message) {
     let newMessageAdded = JSON.parse(message);
-    //console.log(`User ${newMessageAdded.username} said ${newMessageAdded.content}`);
-    if (newMessageAdded.type === "postMessage"){
+    console.log(`User ${newMessageAdded.username} said ${newMessageAdded.content}`);
+        if(newMessageAdded.type === "showMessage"){
+
       wss.clients.forEach(function each(client) {
         client.send(
           JSON.stringify({
             type: "incomingMessage",
-            data: parsedMessage
+            data: newMessageAdded
           })
         );
       });
+
     }
  });
 
