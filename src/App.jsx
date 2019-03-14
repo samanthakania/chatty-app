@@ -36,7 +36,6 @@ class App extends Component {
     })
   }
 
-
   componentDidMount() {
   console.log("componentDidMount <App />");
   setTimeout(() => {
@@ -57,7 +56,7 @@ class App extends Component {
           <a href="/" className="navbar-brand">Chatty</a>
         </nav>
         <MessageList messages={this.state.messages}/>
-        <ChatBar currentUser={this.state.currentUser.name} />
+        <ChatBar currentUser={this.state.currentUser.name} addMessage={this.addMessage} />
       </div>
     );
   }
