@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
-
 class ChatBar extends Component {
-
 
 newMessageHandler = (event) =>{
   if(event.key === 'Enter'){
