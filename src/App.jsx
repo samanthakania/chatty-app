@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state =
     {
-      currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
+      currentUser: {name: "Harambe"}, // optional. if currentUser is not defined, it means the user is Anonymous
       messages: []
     };
   }
@@ -19,29 +19,22 @@ class App extends Component {
       id: uuidv1(),
       username: this.state.currentUser.name,
       content: message,
+      type: "incomingMessage"
     }
-    const messages = this.state.messages.concat(newMessage)
-    this.setState({messages: messages})
     this.socket.send(JSON.stringify(newMessage))
   }
 
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001");
-    // Connection opened
-    this.socket.addEventListener('open', (event) => {
-      // this.socket.send('Hello Server!');
-    });
     // Listen for messages
-    this.socket.addEventListener = (event) => {
-      let parsedData = JSON.parse(event.data).data;
-      let parsedType = JSON.parse(event.data).type;
 
-      console.log(parsedData)
-
-      if(parsedType === "incomingMessage")
+    this.socket.onmessage = (event) => {
+      let message = JSON.parse(event.data);
+        console.log(message)
+      if(message.type === "incomingMessage")
       this.setState( state => {
         return {
-          messages:[parsedData, ...state.messages]
+          messages:[...state.messages, message]
         }
       });
     }
@@ -56,7 +49,8 @@ class App extends Component {
         <MessageList
         messages={this.state.messages}/>
         <ChatBar
-        currentUser={this.state.currentUser.name} addMessage={this.addMessage} />
+        currentUser={this.state.currentUser.name}
+        addMessage={this.addMessage} />
       </div>
     );
   }
