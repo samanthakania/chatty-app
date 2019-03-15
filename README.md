@@ -10,7 +10,7 @@ Start the server using npm start inside the chatty_server folder.
 Start the other server using npm start in the chattyApp folder.
 Go to http://localhost:8080/
 
-### Screenshots
+## Screenshots
 !["Screenshot of ChattyApp"] (https://github.com/samanthakania/chatty-app/blob/master/docs/Chatty-app.png?raw=true)
 
 ### Dependencies for ChattyApp
