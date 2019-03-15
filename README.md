@@ -5,7 +5,7 @@ ChattyApp is a real time chat room application. Many users can connect into the 
 
 
 ## Screenshots
-!["Screenshot of ChattyApp"] (hhttps://github.com/samanthakania/chatty-app/blob/master/docs/Chatty-app.png)
+!["Screenshot of ChattyApp"] (https://github.com/samanthakania/chatty-app/blob/master/docs/Chatty-app.png)
 
 
 ### How to start ChattyApp
