@@ -1,41 +1,34 @@
-React Boilerplate
+ChattyApp
 =====================
 
-A minimal and light dev environment for ReactJS.
+ChattyApp is a real time chat room application. Many users can connect into the chat room and send messages to each other.
 
-### Usage
+### How to start ChattyApp
+Clone this repository
+Install all dependencies using npm intall in chatty_server folder and chattyApp folder.
+Start the server using npm start inside the chatty_server folder.
+Start the other server using npm start in the chattyApp folder.
+Go to http://localhost:8080/
 
-Clone the boilerplate and create your own git repo.
-
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
-
-Install the dependencies and start the server.
-
-```
-npm install
-npm start
-open http://localhost:8080
-```
-
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:8080/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
+### Dependencies for ChattyApp
+babel-core-: 6.23.1 or above
+babel-loader-: 6.3.1 or above
+babel-preset-es2015-: 6.22.0 or above
+babel-preset-react-: 6.23.0 or above
+babel-preset-stage-0-: 6.22.0 or above
+css-loader-: 0.26.1 or above
+eslint-: 3.15.0 or above
+eslint-plugin-react-: 6.9.0 or above
+node-sass-: 4.5.0 or above
+sass-loader-: 6.0.0 or above
+sockjs-client-: 1.1.2 or above
+style-loader-: 0.13.1 or above
+webpack-: 2.2.1 or above
+webpack-dev-server-: 2.3 or above
+Dependencies for chatty_server
+express: 4.16.2 or above
+uuid: 3.1.0 or above
+ws: 4.0.0 or above
 
 ### Dependencies
 
