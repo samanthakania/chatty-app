@@ -18,8 +18,23 @@ const wss = new SocketServer({ server });
 // Set up a callback that will run when a client connects to the server
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
+let userCount = 0;
+
 wss.on('connection', (ws) => {
   console.log('Client connected');
+
+  userCount = userCount + 1;
+
+  wss.clients.forEach(function each(client) {
+    client.send(
+      JSON.stringify({
+        type: 'incomingUser',
+        connections: wss.clients.size
+      })
+    );
+  });
+
+
 
 wss.broadcast = message => {
   wss.clients.forEach(client => {
@@ -36,4 +51,19 @@ wss.broadcast = message => {
 
       wss.broadcast(newMessageAdded)
  });
+
+  ws.on('close', () => {
+    console.log('Client disconnected')
+
+    userCount = userCount - 1;
+
+    wss.clients.forEach(function each(client) {
+    client.send(
+      JSON.stringify({
+        type: 'incomingUser',
+        connections: wss.clients.size
+      })
+      );
+    });
+  });
 })
