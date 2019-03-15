@@ -3,6 +3,11 @@ ChattyApp
 
 ChattyApp is a real time chat room application. Many users can connect into the chat room and send messages to each other.
 
+
+## Screenshots
+!["Screenshot of ChattyApp"] (hhttps://github.com/samanthakania/chatty-app/blob/master/docs/Chatty-app.png)
+
+
 ### How to start ChattyApp
 Clone this repository
 Install all dependencies using npm intall in chatty_server folder and chattyApp folder.
