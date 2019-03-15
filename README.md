@@ -12,7 +12,6 @@ Go to http://localhost:8080/
 
 ### Dependencies for ChattyApp
 babel-core-: 6.23.1 or above
-
 babel-loader-: 6.3.1 or above
 babel-preset-es2015-: 6.22.0 or above
 babel-preset-react-: 6.23.0 or above
