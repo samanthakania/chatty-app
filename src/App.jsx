@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ChatBar from "./Chatbar.jsx";
+import ChatBar from "./ChatBar.jsx";
 import MessageList from "./MessageList.jsx";
 import NavBar from "./NavBar.jsx";
 const uuidv1 = require('uuid/v1');
